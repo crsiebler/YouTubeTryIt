@@ -5,26 +5,25 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouTube API", "GoogleNews API\YouTube API.csproj", "{6E23FEAE-A4F1-4677-8306-6F8DAF6F7982}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "YouTubeService", "http://localhost:29873", "{7587795E-DFAE-47BA-AFDE-383E228FEE84}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "YouTubeService(1)", "http://localhost:30680", "{0920C17A-2CC8-48EC-A7B0-94B49B5575AB}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_29873"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\WebSites\YouTubeService\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_29873\"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_30680"
+		Debug.AspNetCompiler.PhysicalPath = "YouTubeService\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_30680\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_29873"
-		Release.AspNetCompiler.PhysicalPath = "..\..\WebSites\YouTubeService\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_29873\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_30680"
+		Release.AspNetCompiler.PhysicalPath = "YouTubeService\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_30680\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\..\WebSites\YouTubeService\"
-		DefaultWebSiteLanguage = "Visual C#"
+		SlnRelativePath = "YouTubeService\"
 	EndProjectSection
 EndProject
 Global
@@ -37,10 +36,10 @@ Global
 		{6E23FEAE-A4F1-4677-8306-6F8DAF6F7982}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E23FEAE-A4F1-4677-8306-6F8DAF6F7982}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E23FEAE-A4F1-4677-8306-6F8DAF6F7982}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7587795E-DFAE-47BA-AFDE-383E228FEE84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7587795E-DFAE-47BA-AFDE-383E228FEE84}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7587795E-DFAE-47BA-AFDE-383E228FEE84}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{7587795E-DFAE-47BA-AFDE-383E228FEE84}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{0920C17A-2CC8-48EC-A7B0-94B49B5575AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0920C17A-2CC8-48EC-A7B0-94B49B5575AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0920C17A-2CC8-48EC-A7B0-94B49B5575AB}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{0920C17A-2CC8-48EC-A7B0-94B49B5575AB}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
