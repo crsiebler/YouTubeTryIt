@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GoogleNews_API {
+namespace YouTube_API {
     
     
     public partial class News {
