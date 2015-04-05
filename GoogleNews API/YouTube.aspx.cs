@@ -10,9 +10,13 @@ using System.IO;
 using System.Text;
 using System.Data;
 
+using Google.Apis.Services;
+using Google.Apis.YouTube.v3;
+using Google.Apis.YouTube.v3.Data;
+
 namespace YouTube_API
 {
-    public partial class News : System.Web.UI.Page
+    public partial class YouTubeSearch : System.Web.UI.Page
     {
         /// <summary>
         /// Page Load Method
@@ -30,13 +34,16 @@ namespace YouTube_API
         /// <param name="topic"></param>
         /// <returns></returns>
         [WebMethod]
-        public static NewsArticle[] GetNewsArticles(string topic)
+        public static Video[] GetVideos(string topic)
         {
+            /*
             // Initialize the List of News Articles
-            List<NewsArticle> articles = new List<NewsArticle>();
+            List<Video> videos = new List<Video>();
 
             // Initialize the Google News RSS Feed request
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://news.google.com/news?q=" + topic + "&output=rss");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(
+                "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + topic.Replace(" ", "+") + "&type=video&maxResults=10&key=AIzaSyBAKxqcK17_ngThmKCHFLw4g1_aB1eOHDY"
+            );
 
             // Specify GET Method Request
             request.Method = "GET";
@@ -77,24 +84,50 @@ namespace YouTube_API
                     // Loop through each RSS element and store it as a NewsArticle
                     foreach (DataRow row in articleTable.Rows)
                     {
-                        NewsArticle article = new NewsArticle();
-                        article.id = row["item_id"].ToString(); 
-                        article.title = row["title"].ToString();
-                        article.url = row["link"].ToString();
-                        article.date = row["pubDate"].ToString();
-                        article.description = row["description"].ToString();
-                        articles.Add(article);
+                        Video video = new Video();
+                        video.id = row["id"]["videoId"].ToString(); 
+                        video.title = row["snippet"]["title"].ToString();
+                        video.date = row["snippet"]["publishedAt"].ToString();
+                        video.description = row["snippet"]["description"].ToString();
+                        videos.Add(video);
                     }
                 }
             }
 
-            return articles.ToArray();
+            return videos.ToArray();
+            */
+            List<Video> videos = new List<Video>();
+
+            var youTubeService = new YouTubeService(new BaseClientService.Initializer()
+            {
+                ApiKey = "AIzaSyBAKxqcK17_ngThmKCHFLw4g1_aB1eOHDY",
+                ApplicationName = "YouTube Search TryIt"
+            });
+
+            var searchListRequest = youTubeService.Search.List("snippet");
+            searchListRequest.Q = topic.Replace(" ", "+");
+            searchListRequest.MaxResults = 10;
+            searchListRequest.Order = SearchResource.ListRequest.OrderEnum.Relevance;
+            searchListRequest.Type = "video";
+
+            SearchListResponse response = searchListRequest.Execute();
+
+            foreach (SearchResult result in response.Items)
+            {
+                Video video = new Video();
+                video.id = result.Id.VideoId;
+                video.title = result.Snippet.Title;
+                video.date = result.Snippet.PublishedAt.ToString();
+                video.description = result.Snippet.Description;
+                videos.Add(video);
+            }
+
+            return videos.ToArray();
         }
 
-        public class NewsArticle
+        public class Video
         {
             public string title { get; set; }
-            public string url { get; set; }
             public string date { get; set; }
             public string id { get; set; }
             public string description { get; set; }

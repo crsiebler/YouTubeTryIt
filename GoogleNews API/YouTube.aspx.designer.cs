@@ -10,7 +10,7 @@
 namespace YouTube_API {
     
     
-    public partial class News {
+    public partial class YouTubeSearch {
         
         /// <summary>
         /// form1 control.

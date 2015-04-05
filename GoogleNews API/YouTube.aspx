@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="YouTube.aspx.cs" Inherits="YouTube_API.News" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="YouTube.aspx.cs" Inherits="YouTube_API.YouTubeSearch" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -6,7 +6,7 @@
     <title>YouTube TryIt</title>
     <script type="text/javascript" src="Scripts/jquery-2.1.0.min.js"></script>
     <script type="text/javascript">
-        // Function for GetNews using Ajax Post Method
+        // Function for GetVideos using Ajax Post Method
         function GetVideos() {
             // Create Ajax Post Method
             $.ajax({
@@ -21,7 +21,10 @@
                     // Set For loop for binding Div Row wise
                     for (var i = 0; i < data.d.length; i++) {
                         // Design Div Dynamically using append
-                        $("#DivVideos").append("<a target=\"_blank\" href=\"" + data.d[i].url + "\">" + data.d[i].title + "</a><br />");
+                        $("#DivVideos").append(
+                            "<a target=\"_blank\" href=\"http://www.youtube.com/watch?v=" + data.d[i].id + "\">" + data.d[i].title + "</a><br /><blockquote>"
+                            + data.d[i].description + "</blockquote><br /><br />"
+                        );
                     }
                 },
                 error: function (result) {
@@ -43,11 +46,11 @@
                 </td>
             </tr>
             <tr>
-                <td>Method Signature: GetVideos(string):List</td>
+                <td>Method Signature: GetVideos(string):JSON Array</td>
             </tr>
             <tr>
                 <td>String Value: <asp:TextBox runat="server" ID="input" CssClass="textbox" /></td>
-                <td><asp:Button id="Button1" Text="Submit" OnClientClick="return GetNews()" runat="server"/></td>
+                <td><asp:Button id="Button1" Text="Submit" OnClientClick="return GetVideos()" runat="server"/></td>
             </tr>
         </table>
         <br />
